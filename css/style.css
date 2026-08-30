@@ -1,0 +1,261 @@
+/* AusExplorer - Outback Journey Design System */
+:root {
+  /* Outback Color Palette */
+  --ochre-primary: #C85A32;
+  --ochre-light: #E0734C;
+  --ochre-dark: #9A3412;
+  --sandstone-bg: #0F172A;
+  --card-bg: #1E293B;
+  --card-bg-elevated: #243248;
+  --border-subtle: #334155;
+  --border-focus: #F59E0B;
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-highlight: #FDE047;
+  
+  --sun-gold: #F59E0B;
+  --eucalyptus-green: #10B981;
+  --desert-red: #EF4444;
+  --ocean-blue: #38BDF8;
+  --lavender: #A855F7;
+  
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+  
+  --safe-bottom: env(safe-area-inset-bottom, 16px);
+  --header-height: 64px;
+  --nav-height: 68px;
+}
+
+/* Light Theme (Desert Sandstone) */
+[data-theme="light"] {
+  --sandstone-bg: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --card-bg-elevated: #F1F5F9;
+  --border-subtle: #E2E8F0;
+  --border-focus: #C85A32;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --text-highlight: #B45309;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Sunlight High-Contrast Mode */
+[data-theme="sunlight"] {
+  --sandstone-bg: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --card-bg-elevated: #F8FAFC;
+  --border-subtle: #000000;
+  --border-focus: #000000;
+  --text-main: #000000;
+  --text-muted: #222222;
+  --text-highlight: #7C2D12;
+  --ochre-primary: #9A3412;
+  --shadow-sm: none;
+  --shadow-md: 0 0 0 1px #000000;
+  --shadow-lg: 0 0 0 2px #000000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--sandstone-bg);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + 20px);
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* App Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: var(--sandstone-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--ochre-primary), var(--ochre-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.offline-mode {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--eucalyptus-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.icon-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* App Main Content Container */
+.main-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--nav-height) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  background-color: var(--sandstone-bg);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color 0.15s ease;
+}
+
+.nav-item.active {
+  color: var(--ochre-primary);
+}
+
+.nav-item.active svg {
+  stroke: var(--ochre-primary);
+  filter: drop-shadow(0 2px 6px rgba(200, 90, 50, 0.4));
+}
+
+/* Offline Banner Notification */
+.offline-banner {
+  background: linear-gradient(90deg, #1E3A8A, #0284C7);
+  color: #FFF;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.offline-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
