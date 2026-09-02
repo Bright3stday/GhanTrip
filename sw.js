@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aus-explorer-v1.0.0';
+const CACHE_NAME = 'aus-explorer-v1.1.0';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const STATIC_ASSETS = [
   './js/tracker-data.js',
   './js/survival-data.js',
   './js/tools.js',
+  './js/live-data.js',
   './js/app.js',
   './assets/icons/icon.svg',
   './assets/icons/icon-192.png',
@@ -46,6 +47,9 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   // Only handle GET requests
   if (event.request.method !== 'GET') return;
+
+  // Let third-party API calls (e.g. optional live-data fetches) pass through untouched
+  if (new URL(event.request.url).origin !== self.location.origin) return;
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
