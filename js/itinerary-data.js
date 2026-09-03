@@ -35,7 +35,9 @@ const ItineraryData = {
           "icon": "utensils",
           "location": "Gouger St & Grote St, Adelaide CBD",
           "description": "Start at the bustling 150-year-old covered food market. Grab artisan coffee and fresh pastries from Lucia's Pizza & Spaghetti Bar (Adelaide's first espresso bar, 1957) or Les Deux Coqs. Sample kangaroo jerky, artisan cheeses, South Australian dried fruits, and gourmet pastries.",
-          "tips": "Central Market is closed on Sundays and Mondays. If traveling on a Sunday, head to East End cafes along Rundle St or Central Market Arcade cafes."
+          "tips": "Central Market is closed on Sundays and Mondays. If traveling on a Sunday, head to East End cafes along Rundle St or Central Market Arcade cafes.",
+          "dietaryNote": "Skip the pork-based stalls; the seafood counters and Barossa cured meats (beef/kangaroo) cover protein well here.",
+          "coords": { "lat": -34.9285, "lng": 138.5951 }
         },
         {
           "time": "10:45 AM - 01:00 PM",
@@ -44,7 +46,8 @@ const ItineraryData = {
           "icon": "mapPin",
           "location": "North Terrace, Adelaide",
           "description": "Walk along the tree-lined boulevard. Visit the South Australian Museum featuring the world's most comprehensive Australian Aboriginal Cultures Collection (over 3,000 artifacts). Step inside the breathtaking Mortlock Wing at the State Library (frequently rated one of the most beautiful libraries in the world, reminiscent of Hogwarts).",
-          "tips": "Admission to the SA Museum and Art Gallery is free. High-speed free Wi-Fi is available across North Terrace to download any last-minute files before boarding The Ghan."
+          "tips": "Admission to the SA Museum and Art Gallery is free. High-speed free Wi-Fi is available across North Terrace to download any last-minute files before boarding The Ghan.",
+          "photoTip": "The Mortlock Wing's interior light is best late morning — bring a fast prime for the low-light reading room shots."
         },
         {
           "time": "01:00 PM - 02:15 PM",
@@ -62,7 +65,9 @@ const ItineraryData = {
           "icon": "sun",
           "location": "Victoria Square \u2192 Moseley Square, Glenelg",
           "description": "Board the Glenelg Tram from Victoria Square (CBD) straight to the beach terminus at Moseley Square (~35 min ride). Stroll down historic Glenelg Jetty, feel the Gulf St Vincent breeze, explore Jetty Road boutique shops, and grab a gelato from Gelista or The Moseley Beach Club.",
-          "tips": "MetroCard or contactless credit/debit card (Visa/Mastercard tap-on) works directly on the tram."
+          "tips": "MetroCard or contactless credit/debit card (Visa/Mastercard tap-on) works directly on the tram.",
+          "photoTip": "Shoot from Glenelg Jetty looking back at the coast for golden hour; arrive ~30 min before sunset to get set up.",
+          "coords": { "lat": -34.9805, "lng": 138.5165 }
         },
         {
           "time": "06:00 PM - 08:30 PM",
@@ -71,7 +76,9 @@ const ItineraryData = {
           "icon": "utensils",
           "location": "Peel St / Leigh St, Adelaide CBD",
           "description": "Adelaide's celebrated laneway precinct is packed with intimate wine bars and award-winning dining. Savor South Australian Clare Valley Riesling or McLaren Vale Shiraz at Maybe Mae or Pink Moon Saloon. Dine at Peel Street Restaurant, Osteria Oggi, or Africola.",
-          "tips": "Book ahead for top dining spots or arrive early around 6:00 PM for walk-ins."
+          "tips": "Book ahead for top dining spots or arrive early around 6:00 PM for walk-ins.",
+          "dietaryNote": "Osteria Oggi and Africola both do strong seafood and grilled-meat mains without needing to ask for pork substitutions.",
+          "coords": { "lat": -34.9249, "lng": 138.5983 }
         },
         {
           "time": "09:00 PM - 10:30 PM",
@@ -217,7 +224,9 @@ const ItineraryData = {
           "icon": "utensils",
           "location": "Alice Springs Telegraph Station",
           "description": "Gather for an unforgettable dinner feast set among historic stone buildings and ghost gum trees. Enjoy fresh damper bread, grilled barramundi, tender kangaroo steaks, gourmet sausages, live bush music, and an astronomer-guided tour of the southern constellations.",
-          "tips": "Sturdy flat shoes recommended for gravel pathways."
+          "tips": "Sturdy flat shoes recommended for gravel pathways.",
+          "dietaryNote": "The BBQ spread usually includes sausages that may be pork — ask staff which grilled items are beef/kangaroo/barramundi instead.",
+          "coords": { "lat": -23.6700, "lng": 133.8830 }
         },
         {
           "time": "10:00 PM",
@@ -327,7 +336,9 @@ const ItineraryData = {
           "icon": "utensils",
           "location": "Darwin Waterfront Precinct",
           "description": "Begin your day at the lively Waterfront precinct. Grab iced coffee and breakfast at Wharf One Cafe or The Pearl. Take in views of Darwin Harbour and tropical frangipani gardens.",
-          "tips": "The Waterfront is connected to Darwin CBD via a free public skybridge and glass elevator."
+          "tips": "The Waterfront is connected to Darwin CBD via a free public skybridge and glass elevator.",
+          "photoTip": "Morning light on the lagoon and Stokes Hill Wharf pylons is soft and even — good for wide harbour shots without harsh shadows.",
+          "coords": { "lat": -12.4650, "lng": 130.8425 }
         },
         {
           "time": "09:30 AM - 11:00 AM",
@@ -354,7 +365,9 @@ const ItineraryData = {
           "icon": "utensils",
           "location": "Fannie Bay or Stokes Hill Wharf",
           "description": "Enjoy fresh wild-caught Barramundi burgers, laksa, or salt-and-pepper squid overlooking Fannie Bay or the bustling working harbor at Stokes Hill Wharf.",
-          "tips": "Darwin's food culture is heavily influenced by Southeast Asia\u2014Darwin Laksa is a legendary local delicacy."
+          "tips": "Darwin's food culture is heavily influenced by Southeast Asia\u2014Darwin Laksa is a legendary local delicacy.",
+          "dietaryNote": "Barramundi burgers and salt-and-pepper squid are the go-to protein options here, no pork on the usual menu.",
+          "coords": { "lat": -12.4720, "lng": 130.8460 }
         },
         {
           "time": "03:00 PM - 05:00 PM",
@@ -373,6 +386,17 @@ const ItineraryData = {
           "location": "Mindil Beach / Cullen Bay Marina",
           "description": "Witness one of the southern hemisphere's most legendary sunsets as the fireball sun sinks directly into the Arafura Sea. If visiting on Thursday or Sunday (Dry Season), browse hundreds of stalls at the Mindil Beach Sunset Market for Thai, Indonesian, and Greek street food. Otherwise, grab fish and chips at Cullen Bay Marina.",
           "tips": "Do NOT enter the water at Mindil Beach even if others are paddling. Stay on the dry sand."
+        },
+        {
+          "time": "05:00 PM - 06:00 PM (alternative to Mindil)",
+          "title": "East Point Reserve — Sunset Alternative",
+          "category": "Sightseeing & Wildlife",
+          "icon": "sun",
+          "location": "East Point Reserve, Darwin",
+          "description": "If it's not a Thursday or Sunday, Mindil Beach Sunset Market won't be running. East Point Reserve is the better photography alternative: sunset over the harbour, wallabies out at dusk, and WWII gun emplacements to frame against the light.",
+          "tips": "Best reached by taxi/rideshare — no direct bus route. Bring insect repellent for dusk.",
+          "photoTip": "Position west-facing along the point 20-30 min before sunset; wallabies tend to appear as the light drops.",
+          "coords": { "lat": -12.3987, "lng": 130.8676 }
         },
         {
           "time": "08:00 PM - 10:00 PM",

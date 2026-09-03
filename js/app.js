@@ -207,7 +207,7 @@ function renderItineraryView(container) {
         ${getIcon('clock')} Timed Schedule & Guide
       </h3>
       <div class="timeline">
-        ${currentDay.timeline.map(item => `
+        ${currentDay.timeline.map((item, idx) => `
           <div class="timeline-item">
             <div class="timeline-marker"></div>
             <div class="timeline-content">
@@ -223,6 +223,18 @@ function renderItineraryView(container) {
                   <strong>Travel Tip:</strong> ${item.tips}
                 </div>
               ` : ''}
+              ${item.photoTip ? `
+                <div class="timeline-tips">
+                  <strong>📷 Photo tip:</strong> ${item.photoTip}
+                  ${item.coords && LiveData.isEnabled() ? `<div class="timeline-live" data-live-photo="${idx}"></div>` : ''}
+                </div>
+              ` : ''}
+              ${item.dietaryNote ? `
+                <div class="timeline-tips">
+                  <strong>🍽 Dietary note:</strong> ${item.dietaryNote}
+                  ${item.coords && LiveData.isEnabled() ? `<div class="timeline-live" data-live-dietary="${idx}"></div>` : ''}
+                </div>
+              ` : ''}
             </div>
           </div>
         `).join('')}
@@ -231,6 +243,41 @@ function renderItineraryView(container) {
   `;
 
   container.innerHTML = html;
+  hydrateLiveData(currentDay.timeline);
+}
+
+async function hydrateLiveData(timeline) {
+  if (!LiveData.isEnabled() || !navigator.onLine) return;
+
+  timeline.forEach(async (item, idx) => {
+    if (!item.coords) return;
+
+    if (item.photoTip) {
+      const el = document.querySelector(`[data-live-photo="${idx}"]`);
+      if (el) {
+        el.textContent = 'Checking live data…';
+        const sun = await LiveData.fetchSunTimes(item.coords.lat, item.coords.lng);
+        if (sun) {
+          el.textContent = `🌅 Live today: sunrise ${sun.sunrise}, sunset ${sun.sunset}`;
+        } else {
+          el.remove();
+        }
+      }
+    }
+
+    if (item.dietaryNote) {
+      const el = document.querySelector(`[data-live-dietary="${idx}"]`);
+      if (el) {
+        el.textContent = 'Checking live data…';
+        const hours = await LiveData.fetchVenueStatus(item.coords.lat, item.coords.lng, item.title);
+        if (hours) {
+          el.textContent = `🕒 Live hours: ${hours}`;
+        } else {
+          el.remove();
+        }
+      }
+    }
+  });
 }
 
 function selectDayIndex(index) {
@@ -542,6 +589,20 @@ function renderToolsView(container) {
       <button class="day-chip" onclick="showToolSection('backupSection')">💾 Backup & Share</button>
     </div>
 
+    <!-- Live Data Opt-In -->
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+        ${getIcon('wifiOff')} Live Data
+      </h3>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 10px;">
+        Optionally fetch live sunset times and venue hours for photo & dining tips on the Itinerary tab. Requires internet — falls back to the built-in tips when offline.
+      </p>
+      <div class="check-row ${LiveData.isEnabled() ? 'checked' : ''}" onclick="toggleLiveData()">
+        <div class="checkbox-custom">${LiveData.isEnabled() ? getIcon('check') : ''}</div>
+        <div class="check-text">Enable live photo & dining data</div>
+      </div>
+    </div>
+
     <!-- Section 1: Checklist -->
     <div id="checklistSection" class="tool-subview">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
@@ -720,6 +781,11 @@ function showToolSection(sectionId) {
 
 function toggleCheck(catIdx, itemId) {
   ToolsManager.toggleCheckItem(catIdx, itemId);
+  renderCurrentView();
+}
+
+function toggleLiveData() {
+  LiveData.setEnabled(!LiveData.isEnabled());
   renderCurrentView();
 }
 

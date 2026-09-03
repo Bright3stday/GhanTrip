@@ -206,6 +206,13 @@
   color: var(--sun-gold);
 }
 
+.timeline-live {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
 /* Mileposts & Tracker */
 .milepost-list {
   display: flex;
