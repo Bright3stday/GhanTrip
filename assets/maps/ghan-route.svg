@@ -72,7 +72,7 @@
     <circle r="16" fill="#EF4444" opacity="0.25" filter="url(#glow)"/>
     <circle r="8" fill="#EF4444" stroke="#FFFFFF" stroke-width="2.5"/>
     <text x="20" y="4" font-size="13" font-weight="800" fill="#F87171">Alice Springs (KM 1,555)</text>
-    <text x="20" y="18" font-size="9" fill="var(--text-muted, #CBD5E1)">Red Centre • Major Stop & BBQ</text>
+    <text x="20" y="18" font-size="9" fill="var(--text-muted, #CBD5E1)">Red Centre • Major Stop &amp; BBQ</text>
   </g>
 
   <!-- Marla (KM 1,060) -->
